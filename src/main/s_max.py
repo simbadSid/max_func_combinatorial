@@ -1,3 +1,4 @@
+import random
 from typing import List
 
 from src.utils.utils import FileParser
@@ -28,6 +29,12 @@ class Smax:
             ni = int(line[0])
             self.k_list[i] = list(map(f, line[1:ni+1]))
 
+    def set_random_input(self, k: int, m: int):
+        assert(k > 0 and m > 0)
+
+        self.k = k
+        self.m = m
+        self.k_list = [[random.randint(1, 100000) for _ in range(self.k)] for _ in range(self.k)]
 
     def find_max(self) -> int:
         # Init the transition matrix (used for the computation)
@@ -53,6 +60,6 @@ class Smax:
 
 if __name__ == '__main__':
     sMax = Smax()
-    sMax.parse_input(file_relative_path='tests/input/test1.in')
+    sMax.parse_input(file_relative_path='tests/input/non_regression/test1.in')
     result = sMax.find_max()
     print(result)
