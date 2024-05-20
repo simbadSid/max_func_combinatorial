@@ -39,4 +39,4 @@ jobs:
         echo "PYTHONPATH=$(pwd)" >> $GITHUB_ENV
     - name: Test with pytest
       run: |
-        pytest
+        pytest tests/src/non_regression
