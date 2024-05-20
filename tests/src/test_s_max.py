@@ -1,6 +1,6 @@
 import pytest
 
-from src.s_max import Smax
+from src.main.s_max import Smax
 from src.utils.utils import FileParser
 
 
@@ -8,8 +8,8 @@ from src.utils.utils import FileParser
 def s_max() -> Smax:
     return Smax()
 
-INPUT_TEST_FILE     = 'test/input/test{0}.in'
-OUTPUT_TEST_FILE    = 'test/output/test{0}.out'
+INPUT_TEST_FILE     = 'tests/input/test{0}.in'
+OUTPUT_TEST_FILE    = 'tests/output/test{0}.out'
 
 @pytest.mark.parametrize("input_file,output_file", [
     (INPUT_TEST_FILE.format(1), OUTPUT_TEST_FILE.format(1)),
@@ -30,7 +30,7 @@ OUTPUT_TEST_FILE    = 'test/output/test{0}.out'
     (INPUT_TEST_FILE.format(16), OUTPUT_TEST_FILE.format(16)),
     (INPUT_TEST_FILE.format(17), OUTPUT_TEST_FILE.format(17)),
 ])
-def test_default_initial_amount(s_max, input_file: str, output_file: str):
+def test_algo(s_max, input_file: str, output_file: str):
     s_max.parse_input(file_relative_path=input_file)
     result = s_max.find_max()
     expected_result = int(FileParser(file_relative_path=output_file).next_line())

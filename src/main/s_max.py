@@ -53,6 +53,6 @@ class Smax:
 
 if __name__ == '__main__':
     sMax = Smax()
-    sMax.parse_input(file_relative_path='test/input/test1.in')
+    sMax.parse_input(file_relative_path='tests/input/test1.in')
     result = sMax.find_max()
     print(result)
